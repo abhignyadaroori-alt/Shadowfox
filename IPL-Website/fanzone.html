@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Zone - SRH Fan Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <nav aria-label="Primary navigation">
+      <div class="logo">SRH FAN HUB</div>
+      <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="matches.html">Matches</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="fanzone.html">Fan Zone</a></li>
+      </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- Page Header -->
+<section class="fanzone-header">
+  <div class="fanzone-header-content">
+    <h1>Orange Army Fan Zone</h1>
+    <p>Connect, Vote, Predict and Support SRH</p>
+  </div>
+</section>
+
+<!-- Favorite Player Poll Section -->
+<section class="poll-section">
+  <div class="section-header">
+    <h2>Favorite Player Poll</h2>
+    <div class="header-line"></div>
+  </div>
+
+  <div class="poll-intro">
+    <p>Vote for your favorite SRH player and show your support for the Orange Army!</p>
+  </div>
+
+  <div class="player-poll-grid">
+    <!-- Player 1: Abhishek Sharma -->
+    <div class="player-card">
+      <div class="player-card-glow"></div>
+      <div class="player-card-content">
+        <div class="player-avatar">AS</div>
+        <h3>Abhishek Sharma</h3>
+        <p class="player-role">Middle Order Batsman</p>
+        <div class="player-stats">
+          <span class="stat">Age: 26</span>
+          <span class="stat">Jersey: 4</span>
+        </div>
+        <button class="vote-btn" onclick="selectPlayer('Abhishek Sharma', this)">Select & Vote</button>
+      </div>
+      <div class="vote-count" id="votes-abhishek">0 Votes</div>
+    </div>
+
+    <!-- Player 2: Ishan Kishan -->
+    <div class="player-card">
+      <div class="player-card-glow"></div>
+      <div class="player-card-content">
+        <div class="player-avatar">IK</div>
+        <h3>Ishan Kishan</h3>
+        <p class="player-role">Wicket Keeper Batsman</p>
+        <div class="player-stats">
+          <span class="stat">Age: 26</span>
+          <span class="stat">Jersey: 23</span>
+        </div>
+        <button class="vote-btn" onclick="selectPlayer('Ishan Kishan', this)">Select & Vote</button>
+      </div>
+      <div class="vote-count" id="votes-ishan">0 Votes</div>
+    </div>
+
+    <!-- Player 3: Nitish Kumar Reddy -->
+    <div class="player-card">
+      <div class="player-card-glow"></div>
+      <div class="player-card-content">
+        <div class="player-avatar">NKR</div>
+        <h3>Nitish Kumar Reddy</h3>
+        <p class="player-role">All-rounder</p>
+        <div class="player-stats">
+          <span class="stat">Age: 23</span>
+          <span class="stat">Jersey: 88</span>
+        </div>
+        <button class="vote-btn" onclick="selectPlayer('Nitish Kumar Reddy', this)">Select & Vote</button>
+      </div>
+      <div class="vote-count" id="votes-nitish">0 Votes</div>
+    </div>
+
+    <!-- Player 4: Heinrich Klaasen -->
+    <div class="player-card">
+      <div class="player-card-glow"></div>
+      <div class="player-card-content">
+        <div class="player-avatar">HK</div>
+        <h3>Heinrich Klaasen</h3>
+        <p class="player-role">Explosive Batsman</p>
+        <div class="player-stats">
+          <span class="stat">Age: 32</span>
+          <span class="stat">Jersey: 45</span>
+        </div>
+        <button class="vote-btn" onclick="selectPlayer('Heinrich Klaasen', this)">Select & Vote</button>
+      </div>
+      <div class="vote-count" id="votes-heinrich">0 Votes</div>
+    </div>
+  </div>
+
+  <div id="poll-message" class="poll-message"></div>
+</section>
+
+<!-- Match Prediction Challenge Section -->
+<section class="prediction-section">
+  <div class="section-header">
+    <h2>Match Prediction Challenge</h2>
+    <div class="header-line"></div>
+  </div>
+
+  <div class="prediction-card">
+    <div class="prediction-glow"></div>
+    <div class="prediction-content">
+      <div class="prediction-question">
+        <h3>🏏 Who will win the next SRH match?</h3>
+        <p>Make your prediction and compete with other fans!</p>
+      </div>
+
+      <div class="prediction-options">
+        <div class="option-group">
+          <button class="prediction-btn srh-btn" onclick="predictMatch('SRH')">
+            <span class="option-icon">🟠</span>
+            <span class="option-text">SRH Wins</span>
+          </button>
+        </div>
+        <div class="divider-text">OR</div>
+        <div class="option-group">
+          <button class="prediction-btn opponent-btn" onclick="predictMatch('Opponent')">
+            <span class="option-icon">⚪</span>
+            <span class="option-text">Opponent Team Wins</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="prediction-message" class="prediction-message"></div>
+
+      <div class="prediction-stats">
+        <div class="stat-item">
+          <span class="stat-label">Total Predictions:</span>
+          <span class="stat-value" id="total-predictions">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SRH Quiz Section -->
+<section class="quiz-section">
+  <div class="section-header">
+    <h2>SRH Trivia Quiz</h2>
+    <div class="header-line"></div>
+  </div>
+
+  <div class="quiz-intro">
+    <p>Test your knowledge about Sunrisers Hyderabad and the Orange Army!</p>
+  </div>
+
+  <div class="quiz-container">
+    <!-- Quiz Card 1 -->
+    <div class="quiz-card">
+      <div class="quiz-glow"></div>
+      <div class="quiz-content">
+        <div class="quiz-question-header">
+          <span class="quiz-number">Q1</span>
+          <h3>Who is the current captain of SRH?</h3>
+        </div>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q1" value="Pat Cummins">
+            <span class="option-text">Pat Cummins</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q1" value="Heinrich Klaasen">
+            <span class="option-text">Heinrich Klaasen</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q1" value="Aiden Markram">
+            <span class="option-text">Aiden Markram</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q1" value="Abhishek Sharma">
+            <span class="option-text">Abhishek Sharma</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Card 2 -->
+    <div class="quiz-card">
+      <div class="quiz-glow"></div>
+      <div class="quiz-content">
+        <div class="quiz-question-header">
+          <span class="quiz-number">Q2</span>
+          <h3>In which year was SRH founded in the IPL?</h3>
+        </div>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q2" value="2010">
+            <span class="option-text">2010</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q2" value="2012">
+            <span class="option-text">2012</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q2" value="2013">
+            <span class="option-text">2013</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q2" value="2015">
+            <span class="option-text">2015</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Card 3 -->
+    <div class="quiz-card">
+      <div class="quiz-glow"></div>
+      <div class="quiz-content">
+        <div class="quiz-question-header">
+          <span class="quiz-number">Q3</span>
+          <h3>How many IPL titles has SRH won?</h3>
+        </div>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q3" value="1">
+            <span class="option-text">1 Title</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q3" value="2">
+            <span class="option-text">2 Titles</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q3" value="3">
+            <span class="option-text">3 Titles</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q3" value="4">
+            <span class="option-text">4 Titles</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Card 4 -->
+    <div class="quiz-card">
+      <div class="quiz-glow"></div>
+      <div class="quiz-content">
+        <div class="quiz-question-header">
+          <span class="quiz-number">Q4</span>
+          <h3>What is SRH's home ground called?</h3>
+        </div>
+        <div class="quiz-options">
+          <label class="quiz-option">
+            <input type="radio" name="q4" value="Arun Jaitley Stadium">
+            <span class="option-text">Arun Jaitley Stadium</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q4" value="Rajiv Gandhi International Cricket Stadium">
+            <span class="option-text">Rajiv Gandhi International Cricket Stadium</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q4" value="M. A. Chidambaram Stadium">
+            <span class="option-text">M. A. Chidambaram Stadium</span>
+          </label>
+          <label class="quiz-option">
+            <input type="radio" name="q4" value="Agarkar Stadium">
+            <span class="option-text">Agarkar Stadium</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="submit-quiz-btn" onclick="submitQuiz()">Submit Quiz</button>
+  <div id="quiz-result" class="quiz-result"></div>
+</section>
+
+</main>
+
+<footer>
+    <p>SRH Fan Hub © 2026 | Created for Internship Project</p>
+</footer>
+
+<script>
+// Player Poll Functionality
+let playerVotes = {
+  'Abhishek Sharma': 0,
+  'Ishan Kishan': 0,
+  'Nitish Kumar Reddy': 0,
+  'Heinrich Klaasen': 0
+};
+
+let selectedPlayer = null;
+
+function selectPlayer(playerName, button) {
+  // Remove previous selection
+  document.querySelectorAll('.player-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+  
+  // Add selection to clicked card
+  button.closest('.player-card').classList.add('selected');
+  selectedPlayer = playerName;
+  
+  // Update button text
+  button.textContent = '✓ Selected - Click Vote!';
+}
+
+function voteForPlayer(playerName) {
+  if (!selectedPlayer) {
+    document.getElementById('poll-message').innerHTML = '<span class="error-msg">⚠️ Please select a player first!</span>';
+    return;
+  }
+  
+  playerVotes[selectedPlayer]++;
+  
+  // Update vote count display
+  const voteId = 'votes-' + selectedPlayer.toLowerCase().replace(/\s+/g, '-');
+  document.getElementById(voteId).textContent = playerVotes[selectedPlayer] + ' Vote' + (playerVotes[selectedPlayer] !== 1 ? 's' : '');
+  
+  // Show confirmation message
+  document.getElementById('poll-message').innerHTML = `<span class="success-msg">✓ Vote recorded for ${selectedPlayer}!</span>`;
+  
+  // Reset selection
+  document.querySelectorAll('.player-card').forEach(card => {
+    card.classList.remove('selected');
+    card.querySelector('.vote-btn').textContent = 'Select & Vote';
+  });
+  selectedPlayer = null;
+  
+  // Clear message after 3 seconds
+  setTimeout(() => {
+    document.getElementById('poll-message').innerHTML = '';
+  }, 3000);
+}
+
+// Match Prediction Functionality
+let totalPredictions = 0;
+
+function predictMatch(team) {
+  totalPredictions++;
+  document.getElementById('total-predictions').textContent = totalPredictions;
+  
+  const message = team === 'SRH' 
+    ? '✓ Great choice! You believe in the Orange Army!'
+    : '✓ Prediction recorded! May the best team win!';
+  
+  document.getElementById('prediction-message').innerHTML = `<span class="success-msg">${message}</span>`;
+  
+  // Clear message after 4 seconds
+  setTimeout(() => {
+    document.getElementById('prediction-message').innerHTML = '';
+  }, 4000);
+}
+
+// Quiz Functionality
+const quizAnswers = {
+  'q1': 'Pat Cummins',
+  'q2': '2013',
+  'q3': '1',
+  'q4': 'Rajiv Gandhi International Cricket Stadium'
+};
+
+function submitQuiz() {
+  let score = 0;
+  let answered = 0;
+  
+  for (let question in quizAnswers) {
+    const selected = document.querySelector(`input[name="${question}"]:checked`);
+    if (selected) {
+      answered++;
+      if (selected.value === quizAnswers[question]) {
+        score++;
+      }
+    }
+  }
+  
+  if (answered === 0) {
+    document.getElementById('quiz-result').innerHTML = '<span class="error-msg">⚠️ Please answer at least one question!</span>';
+    return;
+  }
+  
+  const percentage = Math.round((score / 4) * 100);
+  let message = '';
+  
+  if (percentage === 100) {
+    message = '🏆 Perfect Score! You are an SRH Super Fan!';
+  } else if (percentage >= 75) {
+    message = '⭐ Excellent! You know SRH very well!';
+  } else if (percentage >= 50) {
+    message = '✓ Good effort! Keep following SRH!';
+  } else {
+    message = '📚 Keep learning about the Orange Army!';
+  }
+  
+  document.getElementById('quiz-result').innerHTML = `
+    <div class="quiz-result-content">
+      <p class="result-message">${message}</p>
+      <p class="result-score">Your Score: ${score}/${4} (${percentage}%)</p>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
